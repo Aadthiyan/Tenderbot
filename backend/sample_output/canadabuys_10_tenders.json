@@ -1,0 +1,92 @@
+[
+  {
+    "solicitation_number": "SSC-2026-00456",
+    "title": "Secure Cloud Email and Collaboration Platform Deployment",
+    "department": "Shared Services Canada",
+    "closing_date": "2026-04-30 14:00 EST",
+    "procurement_category": "Services",
+    "region": "Canada-wide",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/ssc-0001"
+  },
+  {
+    "solicitation_number": "DND-26-RFP",
+    "title": "Ruggedized Mobile Command Post Communications Gear",
+    "department": "Department of National Defence",
+    "closing_date": "2026-05-15 12:00 EST",
+    "procurement_category": "Goods",
+    "region": "Ontario",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/dnd-0002"
+  },
+  {
+    "solicitation_number": "CRA-26-887",
+    "title": "Data Warehouse Architecture Review and Redesign",
+    "department": "Canada Revenue Agency",
+    "closing_date": "2026-04-10 17:00 EST",
+    "procurement_category": "Services",
+    "region": "Ontario",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/cra-0003"
+  },
+  {
+    "solicitation_number": "TC-2026-IFB",
+    "title": "Railway IoT Tracking Sensor Network",
+    "department": "Transport Canada",
+    "closing_date": "2026-06-01 15:00 EST",
+    "procurement_category": "Goods and Services",
+    "region": "Canada-wide",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/tc-0004"
+  },
+  {
+    "solicitation_number": "PHAC-26-112",
+    "title": "National Vaccine Logistics Routing Software",
+    "department": "Public Health Agency of Canada",
+    "closing_date": "2026-03-31 16:00 EST",
+    "procurement_category": "Services",
+    "region": "Canada-wide",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/phac-0005"
+  },
+  {
+    "solicitation_number": "RCMP-RFQ-26",
+    "title": "Digital Forensics Examination Software Licenses",
+    "department": "Royal Canadian Mounted Police",
+    "closing_date": "2026-04-20 14:00 EST",
+    "procurement_category": "Goods",
+    "region": "British Columbia",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/rcmp-0006"
+  },
+  {
+    "solicitation_number": "ECCC-2026-08",
+    "title": "Arctic Weather Station Telemetry Modernisation",
+    "department": "Environment and Climate Change Canada",
+    "closing_date": "2026-07-15 12:00 EST",
+    "procurement_category": "Goods and Services",
+    "region": "Nunavut",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/eccc-0007"
+  },
+  {
+    "solicitation_number": "CBSA-26-090",
+    "title": "Border Pre-clearance Biometric Kiosks",
+    "department": "Canada Border Services Agency",
+    "closing_date": "2026-05-01 14:00 EST",
+    "procurement_category": "Goods",
+    "region": "Canada-wide",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/cbsa-0008"
+  },
+  {
+    "solicitation_number": "CSIS-26-RFP",
+    "title": "Zero Trust Network Access (ZTNA) Framework Deployment",
+    "department": "Canadian Security Intelligence Service",
+    "closing_date": "2026-04-25 17:00 EST",
+    "procurement_category": "Services",
+    "region": "Ontario",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/csis-0009"
+  },
+  {
+    "solicitation_number": "STATCAN-2026",
+    "title": "High-Performance Compute Node Procurement for Analytics",
+    "department": "Statistics Canada",
+    "closing_date": "2026-05-10 14:00 EST",
+    "procurement_category": "Goods",
+    "region": "Ontario",
+    "url": "https://canadabuys.canada.ca/en/tender-opportunities/statcan-0010"
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "atm_id": "ATM-26-00123",
+    "title": "Quantum Computing Research Infrastructure Integration",
+    "agency": "Department of Defence",
+    "close_date": "2026-05-10T14:00:00.000+10:00",
+    "value": null,
+    "category": "43210000 - Computer Equipment and Accessories",
+    "state": "ACT",
+    "url": "https://www.tenders.gov.au/Atm/Show/1111"
+  },
+  {
+    "atm_id": "DHA-RFP-2026-04",
+    "title": "Cloud Financial Operations (FinOps) Advisory Services",
+    "agency": "Department of Health and Aged Care",
+    "close_date": "2026-04-20T17:00:00.000+10:00",
+    "value": 2500000.0,
+    "category": "80101500 - Business and corporate management consultation services",
+    "state": "NSW",
+    "url": "https://www.tenders.gov.au/Atm/Show/2222"
+  },
+  {
+    "atm_id": "ATO-26-ITB",
+    "title": "Identity and Access Management (IdAM) Platform Replacement",
+    "agency": "Australian Taxation Office",
+    "close_date": "2026-06-01T10:00:00.000+10:00",
+    "value": 15000000.0,
+    "category": "43230000 - Software",
+    "state": "VIC",
+    "url": "https://www.tenders.gov.au/Atm/Show/3333"
+  },
+  {
+    "atm_id": "BOM-2026-11",
+    "title": "Supercomputer Storage Expansion and Managed Services",
+    "agency": "Bureau of Meteorology",
+    "close_date": "2026-04-15T15:00:00.000+10:00",
+    "value": 8500000.0,
+    "category": "43200000 - Components for information technology or broadcasting or telecommunications",
+    "state": "TAS",
+    "url": "https://www.tenders.gov.au/Atm/Show/4444"
+  },
+  {
+    "atm_id": "CSIRO-RFQ-099",
+    "title": "Laboratory Information Management System (LIMS) Upgrade",
+    "agency": "CSIRO",
+    "close_date": "2026-03-30T14:00:00.000+11:00",
+    "value": 1200000.0,
+    "category": "43231500 - Business function specific software",
+    "state": "WA",
+    "url": "https://www.tenders.gov.au/Atm/Show/5555"
+  },
+  {
+    "atm_id": "ABC-2026-55",
+    "title": "Video Streaming Content Delivery Network (CDN) Provision",
+    "agency": "Australian Broadcasting Corporation",
+    "close_date": "2026-05-25T16:00:00.000+10:00",
+    "value": null,
+    "category": "81112000 - Data services",
+    "state": "National",
+    "url": "https://www.tenders.gov.au/Atm/Show/6666"
+  },
+  {
+    "atm_id": "NBN-26-RFP",
+    "title": "Next Generation Fibre Optic Diagnostics Equipment",
+    "agency": "NBN Co",
+    "close_date": "2026-04-05T17:00:00.000+10:00",
+    "value": 6000000.0,
+    "category": "39120000 - Electrical equipment and components and supplies",
+    "state": "National",
+    "url": "https://www.tenders.gov.au/Atm/Show/7777"
+  },
+  {
+    "atm_id": "HOMEAFFAIRS-102",
+    "title": "Border Processing Kiosk Hardware and Operating System Software",
+    "agency": "Department of Home Affairs",
+    "close_date": "2026-07-01T12:00:00.000+10:00",
+    "value": 11000000.0,
+    "category": "43211500 - Computers",
+    "state": "ACT",
+    "url": "https://www.tenders.gov.au/Atm/Show/8888"
+  },
+  {
+    "atm_id": "DESE-2026-01",
+    "title": "Higher Education Student Data Repository Modernisation",
+    "agency": "Department of Education",
+    "close_date": "2026-04-12T14:00:00.000+10:00",
+    "value": 3400000.0,
+    "category": "81111800 - System and system component administration services",
+    "state": "ACT",
+    "url": "https://www.tenders.gov.au/Atm/Show/9999"
+  },
+  {
+    "atm_id": "IPAUSTRALIA-33",
+    "title": "Machine Learning Patent Search Engine Plugin",
+    "agency": "IP Australia",
+    "close_date": "2026-05-15T15:00:00.000+10:00",
+    "value": 750000.0,
+    "category": "81111500 - Software or hardware engineering",
+    "state": "ACT",
+    "url": "https://www.tenders.gov.au/Atm/Show/0000"
+  }
+]

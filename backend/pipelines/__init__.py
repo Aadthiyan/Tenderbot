@@ -1,0 +1,1 @@
+"""TenderBot Global — Pipelines Package"""

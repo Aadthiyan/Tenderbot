@@ -1,0 +1,68 @@
+# ── Python ─────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+*.cover
+*.log
+
+# ── Virtual Environment ────────────────────────────────────────────────────────
+venv/
+.venv/
+ENV/
+env/
+
+# ── Environment Variables (NEVER commit secrets) ───────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Node / Frontend ────────────────────────────────────────────────────────────
+node_modules/
+frontend/.next/
+frontend/build/
+frontend/dist/
+*.tsbuildinfo
+.npm
+
+# ── OS Artifacts ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Local audio / media generated at runtime ──────────────────────────────────
+backend/audio/
+*.mp3
+
+# ── AgentOps / TinyFish session cache ─────────────────────────────────────────
+.agentops/
+.tinyfish_cache/

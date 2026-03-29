@@ -1,0 +1,92 @@
+[
+  {
+    "reference_number": "ITB-2026-UNICEF-12345",
+    "title": "Provision of Cloud Hosting and Managed IT Services for Global Operations",
+    "organization": "UNICEF",
+    "deadline": "2026-05-15T23:59:00Z",
+    "category": "81111800 - System and system component administration services",
+    "description": "UNICEF seeks a vendor to provide scalable cloud infrastructure and managed services supporting 50+ country offices.",
+    "url": "https://www.ungm.org/Public/Notice/123456"
+  },
+  {
+    "reference_number": "RFP/WHO/2026/089",
+    "title": "Development of an AI-Powered Epidemiological Surveillance Dashboard",
+    "organization": "WHO",
+    "deadline": "2026-04-30T17:00:00Z",
+    "category": "81111500 - Software or hardware engineering",
+    "description": "Design and implementation of an interactive dashboard utilizing machine learning for early outbreak detection.",
+    "url": "https://www.ungm.org/Public/Notice/234567"
+  },
+  {
+    "reference_number": "UNDP-ITB-26-044",
+    "title": "Procurement of Biometric Registration Kits and Software",
+    "organization": "UNDP",
+    "deadline": "2026-04-20T12:00:00Z",
+    "category": "43211500 - Computers",
+    "description": "Supply, delivery, and software integration of biometric portable kits for refugee registration programs.",
+    "url": "https://www.ungm.org/Public/Notice/345678"
+  },
+  {
+    "reference_number": "UNHCR/RFP/2026/012",
+    "title": "Global Cyber Security Operations Center (CSOC) Services",
+    "organization": "UNHCR",
+    "deadline": "2026-05-01T23:59:00Z",
+    "category": "81111800 - System and system component administration services",
+    "description": "Establishment of a 24/7 CSOC for monitoring and incident response across all UNHCR IT assets globally.",
+    "url": "https://www.ungm.org/Public/Notice/456789"
+  },
+  {
+    "reference_number": "WFP-2026-SaaS-990",
+    "title": "SaaS Platform for Supply Chain Visibility and Fleet Management",
+    "organization": "WFP",
+    "deadline": "2026-06-15T15:00:00Z",
+    "category": "43231500 - Business function specific software",
+    "description": "The World Food Programme requires a SaaS solution to modernise its global logistics tracking and fleet management.",
+    "url": "https://www.ungm.org/Public/Notice/567890"
+  },
+  {
+    "reference_number": "UNOPS-RFQ-2026-773",
+    "title": "Renewable Energy IoT Monitoring Systems Deployment",
+    "organization": "UNOPS",
+    "deadline": "2026-04-10T23:59:00Z",
+    "category": "81111500 - Software or hardware engineering",
+    "description": "Hardware and software components to monitor mini-grid solar installations across sub-Saharan Africa.",
+    "url": "https://www.ungm.org/Public/Notice/678901"
+  },
+  {
+    "reference_number": "FAO/IT/2026/001",
+    "title": "Agri-tech Satellite Data Processing Platform",
+    "organization": "FAO",
+    "deadline": "2026-05-20T17:00:00Z",
+    "category": "81112000 - Data services",
+    "description": "Design of a cloud-native platform to ingest, process, and distribute agricultural satellite imagery data to member states.",
+    "url": "https://www.ungm.org/Public/Notice/789012"
+  },
+  {
+    "reference_number": "IOM-ITB-2026-056",
+    "title": "Electronic Visa and Border Management System Migration",
+    "organization": "IOM",
+    "deadline": "2026-06-01T12:00:00Z",
+    "category": "81111800 - System and system component administration services",
+    "description": "Migration of legacy on-premise border management systems to a secure, sovereign cloud environment.",
+    "url": "https://www.ungm.org/Public/Notice/890123"
+  },
+  {
+    "reference_number": "UNESCO/RFP/2026/09",
+    "title": "Digital Preservation Archives - Software Architecture",
+    "organization": "UNESCO",
+    "deadline": "2026-04-25T23:59:00Z",
+    "category": "81111500 - Software or hardware engineering",
+    "description": "Consulting services to design an open-source software architecture for long-term document and media preservation.",
+    "url": "https://www.ungm.org/Public/Notice/901234"
+  },
+  {
+    "reference_number": "UNFPA-26-RFP-34",
+    "title": "Mobile App Development for Maternal Health Logistics",
+    "organization": "UNFPA",
+    "deadline": "2026-04-18T10:00:00Z",
+    "category": "81111500 - Software or hardware engineering",
+    "description": "Full lifecycle development of a low-bandwidth mobile application for tracking maternal health supplies.",
+    "url": "https://www.ungm.org/Public/Notice/012345"
+  }
+]

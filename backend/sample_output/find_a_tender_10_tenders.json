@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Digital Transformation Partner for Central Government",
+    "buyer_name": "Cabinet Office",
+    "published_date": "10/03/2026",
+    "closing_date": "25/04/2026",
+    "contract_value": 75000000.0,
+    "cpv_codes": "72224000",
+    "procedure": "Open procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/111111"
+  },
+  {
+    "title": "Cloud Hosting and Managed Database Services",
+    "buyer_name": "HM Revenue & Customs (HMRC)",
+    "published_date": "15/03/2026",
+    "closing_date": "05/05/2026",
+    "contract_value": 12000000.0,
+    "cpv_codes": "72212210",
+    "procedure": "Restricted procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/222222"
+  },
+  {
+    "title": "National Cyber Security Centre Threat Intel Platform",
+    "buyer_name": "Ministry of Defence",
+    "published_date": "01/03/2026",
+    "closing_date": "20/04/2026",
+    "contract_value": 4500000.0,
+    "cpv_codes": "72212730",
+    "procedure": "Competitive dialogue",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/333333"
+  },
+  {
+    "title": "Provision of Agile Software Development Teams",
+    "buyer_name": "Department for Work and Pensions",
+    "published_date": "12/03/2026",
+    "closing_date": "18/04/2026",
+    "contract_value": 8000000.0,
+    "cpv_codes": "72212000",
+    "procedure": "Open procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/444444"
+  },
+  {
+    "title": "End User Computing Hardware Refresh Programme",
+    "buyer_name": "NHS England",
+    "published_date": "14/03/2026",
+    "closing_date": "30/05/2026",
+    "contract_value": 15000000.0,
+    "cpv_codes": "30213000",
+    "procedure": "Open procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/555555"
+  },
+  {
+    "title": "Public Transport Smart Ticketing Analytics",
+    "buyer_name": "Transport for London (TfL)",
+    "published_date": "08/03/2026",
+    "closing_date": "22/04/2026",
+    "contract_value": 2500000.0,
+    "cpv_codes": "48100000",
+    "procedure": "Negotiated procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/666666"
+  },
+  {
+    "title": "Border Control Biometric Processing Software",
+    "buyer_name": "Home Office",
+    "published_date": "05/03/2026",
+    "closing_date": "30/04/2026",
+    "contract_value": 18000000.0,
+    "cpv_codes": "72222300",
+    "procedure": "Restricted procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/777777"
+  },
+  {
+    "title": "Educational Assessment Portal Deployment",
+    "buyer_name": "Department for Education",
+    "published_date": "11/03/2026",
+    "closing_date": "29/04/2026",
+    "contract_value": 3200000.0,
+    "cpv_codes": "48000000",
+    "procedure": "Open procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/888888"
+  },
+  {
+    "title": "AI Legal Case Review Automation Tool",
+    "buyer_name": "Ministry of Justice",
+    "published_date": "16/03/2026",
+    "closing_date": "15/05/2026",
+    "contract_value": 1800000.0,
+    "cpv_codes": "72212450",
+    "procedure": "Innovation partnership",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/999999"
+  },
+  {
+    "title": "Flood Defense Telemetry IoT Sensors",
+    "buyer_name": "Environment Agency",
+    "published_date": "09/03/2026",
+    "closing_date": "24/04/2026",
+    "contract_value": 5500000.0,
+    "cpv_codes": "72411000",
+    "procedure": "Open procedure",
+    "url": "https://www.find-a-tender.service.gov.uk/Notice/000000"
+  }
+]

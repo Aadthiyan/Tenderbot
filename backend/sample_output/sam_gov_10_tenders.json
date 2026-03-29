@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Cloud Infrastructure Modernization and Migration Services",
+    "agency": "Department of Defense - Air Force",
+    "naics_code": "541512",
+    "deadline": "2026-04-15",
+    "award_value": 4500000.0,
+    "place_of_performance": "Washington, DC",
+    "solicitation_number": "FA8771-26-R-0012",
+    "description": "Seeking expert services to migrate legacy on-premise servers to AWS/Azure environments with enhanced zero trust architecture implementation.",
+    "url": "https://sam.gov/opp/9a8b7c6d5e4f3a2b1c/view"
+  },
+  {
+    "title": "Machine Learning Algorithms for Satellite Imagery Analysis",
+    "agency": "National Geospatial-Intelligence Agency",
+    "naics_code": "541715",
+    "deadline": "2026-05-01",
+    "award_value": 1200000.0,
+    "place_of_performance": "Springfield, VA",
+    "solicitation_number": "NGA-26-BAA-ML01",
+    "description": "Research and development of novel computer vision algorithms to automate feature extraction from high-resolution satellite arrays.",
+    "url": "https://sam.gov/opp/df98s7df98s7df98/view"
+  },
+  {
+    "title": "Enterprise Cybersecurity Audit and Penetration Testing",
+    "agency": "Department of Veterans Affairs",
+    "naics_code": "541519",
+    "deadline": "2026-03-30",
+    "award_value": 850000.0,
+    "place_of_performance": "Remote",
+    "solicitation_number": "VA-26-RFQ-0099",
+    "description": "Annual independent cybersecurity audit of VHA patient portal networks including comprehensive red team penetration testing.",
+    "url": "https://sam.gov/opp/sd098f7gsd098f7g/view"
+  },
+  {
+    "title": "IT Helpdesk Support Services - Tier 1 and Tier 2",
+    "agency": "Department of Agriculture",
+    "naics_code": "541513",
+    "deadline": "2026-04-10",
+    "award_value": 2200000.0,
+    "place_of_performance": "Kansas City, MO",
+    "solicitation_number": "USDA-26-IFB-1122",
+    "description": "Provide 24/7 IT helpdesk support for 15,000 internal users across all USDA field locations nationwide.",
+    "url": "https://sam.gov/opp/kj123h4k1j2h34kj/view"
+  },
+  {
+    "title": "Data Analytics Platform Subscription and Integration",
+    "agency": "Bureau of Labor Statistics",
+    "naics_code": "513210",
+    "deadline": "2026-04-05",
+    "award_value": null,
+    "place_of_performance": "Washington, DC",
+    "solicitation_number": "BLS-26-RFP-DATA",
+    "description": "Procurement of a COTS data analytics platform capable of processing multi-terabyte datasets with real-time visualization dashboards.",
+    "url": "https://sam.gov/opp/m1n2b3v4c5x6z7l8/view"
+  },
+  {
+    "title": "Custom Software Development for Passport Tracking System",
+    "agency": "Department of State",
+    "naics_code": "541511",
+    "deadline": "2026-05-15",
+    "award_value": 8900000.0,
+    "place_of_performance": "Charleston, SC",
+    "solicitation_number": "DOS-26-RFP-PPT",
+    "description": "Overhaul of the legacy passport tracking workflow using modern microservices architecture and React frontend.",
+    "url": "https://sam.gov/opp/pq98w7e6r5t4y3u2/view"
+  },
+  {
+    "title": "AI Chatbot Implementation for Citizen Services",
+    "agency": "General Services Administration",
+    "naics_code": "541512",
+    "deadline": "2026-04-20",
+    "award_value": 450000.0,
+    "place_of_performance": "Remote",
+    "solicitation_number": "GSA-26-RFQ-AI01",
+    "description": "Deploy a FedRAMP-authorized LLM solution to handle basic citizen inquiries regarding USA.gov resources.",
+    "url": "https://sam.gov/opp/a1s2d3f4g5h6j7k8/view"
+  },
+  {
+    "title": "Secure Network Hardware Refresh",
+    "agency": "Department of Homeland Security - CISA",
+    "naics_code": "334290",
+    "deadline": "2026-03-25",
+    "award_value": 5600000.0,
+    "place_of_performance": "Arlington, VA",
+    "solicitation_number": "CISA-26-IFB-NET",
+    "description": "Procurement and installation of next-generation firewalls, routers, and secure switches for regional CISA operation centers.",
+    "url": "https://sam.gov/opp/z1x2c3v4b5n6m7l8/view"
+  },
+  {
+    "title": "Agile Project Management Training Services",
+    "agency": "Federal Bureau of Investigation",
+    "naics_code": "611430",
+    "deadline": "2026-04-08",
+    "award_value": 150000.0,
+    "place_of_performance": "Quantico, VA",
+    "solicitation_number": "FBI-26-RFQ-AGILE",
+    "description": "Provide certified SAFe and Scrum training courses for 200 software engineers over a 12-month period.",
+    "url": "https://sam.gov/opp/q1w2e3r4t5y6u7i8/view"
+  },
+  {
+    "title": "Financial System ERP Migration",
+    "agency": "Department of the Treasury",
+    "naics_code": "541512",
+    "deadline": "2026-06-01",
+    "award_value": 15000000.0,
+    "place_of_performance": "Washington, DC",
+    "solicitation_number": "TREAS-26-RFP-ERP",
+    "description": "Lead the migration from legacy SAP systems to a modern cloud-native ERP solution encompassing HR, payroll, and core financials.",
+    "url": "https://sam.gov/opp/p0o9i8u7y6t5r4e3/view"
+  }
+]

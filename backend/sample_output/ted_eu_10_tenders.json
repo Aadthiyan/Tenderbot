@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Development and maintenance of central AI models for traffic prediction",
+    "contracting_authority": "Federal Ministry for Digital and Transport",
+    "country": "DE",
+    "cpv_code": "72212000",
+    "deadline": "2026-04-20",
+    "estimated_value": 3500000.0,
+    "procedure_type": "Open",
+    "description": "Entwicklung und Wartung von zentralen KI-Modellen (Development and maintenance...).",
+    "url": "https://ted.europa.eu/en/notice/-/detail/123456-2026"
+  },
+  {
+    "title": "Supply of cloud infrastructure and Zero Trust networking solutions",
+    "contracting_authority": "Ministère des Armées",
+    "country": "FR",
+    "cpv_code": "72222300",
+    "deadline": "2026-05-10",
+    "estimated_value": 12000000.0,
+    "procedure_type": "Restricted",
+    "description": "Fourniture d'infrastructures cloud et de solutions réseau Zero Trust pour la défense.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/234567-2026"
+  },
+  {
+    "title": "Digital transformation consulting services for regional healthcare",
+    "contracting_authority": "Azienda Sanitaria Locale Città di Torino",
+    "country": "IT",
+    "cpv_code": "72224000",
+    "deadline": "2026-03-30",
+    "estimated_value": 850000.0,
+    "procedure_type": "Open",
+    "description": "Consulenza per la trasformazione digitale nell'ambito sanitario regionale.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/345678-2026"
+  },
+  {
+    "title": "SaaS Platform for Public Transport Ticketing",
+    "contracting_authority": "Consorcio Regional de Transportes de Madrid",
+    "country": "ES",
+    "cpv_code": "48100000",
+    "deadline": "2026-04-15",
+    "estimated_value": 2400000.0,
+    "procedure_type": "Negotiated",
+    "description": "Plataforma SaaS para la gestión integrada de billetes de transporte público.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/456789-2026"
+  },
+  {
+    "title": "Procurement of specialized high-performance computing clusters",
+    "contracting_authority": "Max Planck Society",
+    "country": "DE",
+    "cpv_code": "48820000",
+    "deadline": "2026-06-01",
+    "estimated_value": 5500000.0,
+    "procedure_type": "Competitive dialogue",
+    "description": "HPC cluster nodes, low-latency interconnects, and scalable storage.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/567890-2026"
+  },
+  {
+    "title": "Cybersecurity Operations Center (SOC) Services as a Service",
+    "contracting_authority": "Belgian Ministry of Finance",
+    "country": "BE",
+    "cpv_code": "72240000",
+    "deadline": "2026-04-05",
+    "estimated_value": null,
+    "procedure_type": "Open",
+    "description": "24/7 Monitoring and threat hunting across national finance sector networks.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/678901-2026"
+  },
+  {
+    "title": "Smart City IoT Sensor Data Lake Construction",
+    "contracting_authority": "City of Amsterdam",
+    "country": "NL",
+    "cpv_code": "72411000",
+    "deadline": "2026-05-15",
+    "estimated_value": 1100000.0,
+    "procedure_type": "Open",
+    "description": "Architecture and deployment of a multi-petabyte data lake for IoT event streaming.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/789012-2026"
+  },
+  {
+    "title": "Provision of software licenses and IT support",
+    "contracting_authority": "Politechnika Warszawska",
+    "country": "PL",
+    "cpv_code": "48000000",
+    "deadline": "2026-03-25",
+    "estimated_value": 450000.0,
+    "procedure_type": "Request for proposals",
+    "description": "Dostawa licencji oprogramowania oraz wsparcie IT.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/890123-2026"
+  },
+  {
+    "title": "Data Privacy and GDPR Compliance Auditing Platform",
+    "contracting_authority": "Swedish Data Protection Authority (IMY)",
+    "country": "SE",
+    "cpv_code": "72222200",
+    "deadline": "2026-04-12",
+    "estimated_value": 600000.0,
+    "procedure_type": "Open",
+    "description": "System to automate the auditing of third-party public sector contractors for GDPR compliance.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/901234-2026"
+  },
+  {
+    "title": "Next-generation 5G/6G research testbed integration",
+    "contracting_authority": "VTT Technical Research Centre of Finland",
+    "country": "FI",
+    "cpv_code": "73100000",
+    "deadline": "2026-06-15",
+    "estimated_value": 8900000.0,
+    "procedure_type": "Innovation partnership",
+    "description": "Building hardware and software interfaces for a multi-access edge computing testbed.",
+    "url": "https://ted.europa.eu/en/notice/-/detail/012345-2026"
+  }
+]
