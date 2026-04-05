@@ -13,7 +13,7 @@ from backend.agents.portal_configs import DEEP_SCRAPE_GOAL
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 
 @retry(
@@ -53,7 +53,7 @@ async def deep_scrape_tender(tender_url: str) -> dict:
 
     try:
         headers = {
-            "Authorization": f"Bearer {settings.tinyfish_api_key}",
+            "X-API-Key": settings.tinyfish_api_key,
             "Content-Type": "application/json",
             "Accept": "text/event-stream",
         }
@@ -67,7 +67,7 @@ async def deep_scrape_tender(tender_url: str) -> dict:
         async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
             async with client.stream(
                 "POST",
-                f"{TINYFISH_BASE_URL}/agent",
+                f"{TINYFISH_BASE_URL}/automation/run-sse",
                 headers=headers,
                 json=payload,
             ) as response:
@@ -94,7 +94,7 @@ async def deep_scrape_tender(tender_url: str) -> dict:
                 action_type="deep_scrape_complete",
                 returns={"url": tender_url[:80], "fields_extracted": len(result)}
             ))
-            session.end_session("Success")
+            session.end_session(end_state="Success")
 
         logger.info(f"Deep scrape complete — {len(result)} fields extracted")
 
@@ -137,7 +137,7 @@ async def deep_scrape_tender(tender_url: str) -> dict:
 
     except Exception as e:
         if session:
-            session.end_session("Fail")
+            session.end_session(end_state="Fail")
         logger.error(f"Deep scrape failed for {tender_url[:80]}: {e}")
         return {}
 

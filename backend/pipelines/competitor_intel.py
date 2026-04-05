@@ -12,7 +12,7 @@ from backend.agents.portal_configs import COMPETITOR_INTEL_GOAL
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 FIREWORKS_URL = "https://api.fireworks.ai/inference/v1/chat/completions"
 
 INTEL_PROMPT = """You are a highly skilled government contracting intelligence analyst.
@@ -150,7 +150,7 @@ Extract a 2-sentence summary of their primary technology stack and value proposi
 Return JSON: {{"name": "{competitor_name}", "summary": "..."}}"""
     
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream"
     }
@@ -163,7 +163,7 @@ Return JSON: {{"name": "{competitor_name}", "summary": "..."}}"""
     result_data = {"name": competitor_name, "summary": "Search failed or timed out."}
     try:
         async with httpx.AsyncClient(timeout=90) as client:
-            async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+            async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
                 if response.status_code != 200:
                     return result_data
                 async for line in response.aiter_lines():
@@ -210,7 +210,7 @@ async def _fetch_past_awards(tender: dict) -> list[dict]:
     goal = COMPETITOR_INTEL_GOAL.format(url=url, kw=kw)
     
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream"
     }
@@ -223,7 +223,7 @@ async def _fetch_past_awards(tender: dict) -> list[dict]:
     result_data = []
     try:
         async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
-            async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+            async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
                 if response.status_code != 200:
                     return result_data
                 async for line in response.aiter_lines():

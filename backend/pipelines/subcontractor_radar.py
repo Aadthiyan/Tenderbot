@@ -14,7 +14,7 @@ from backend.agents.portal_configs import SUBCONTRACTOR_RADAR_GOAL
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 # Known prime hubs or public teaming opportunity boards
 # In production, this can parse dynamically from `top_competitors`
@@ -72,7 +72,7 @@ async def scan_for_sub_opportunities(profile: dict) -> list[dict]:
 async def _scrape_hub(url: str, kw: str) -> list[dict]:
     goal = SUBCONTRACTOR_RADAR_GOAL.format(url=url, kw=kw)
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream"
     }
@@ -81,7 +81,7 @@ async def _scrape_hub(url: str, kw: str) -> list[dict]:
     result_data = []
     try:
         async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
-            async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+            async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
                 if response.status_code != 200:
                     return result_data
                 async for line in response.aiter_lines():

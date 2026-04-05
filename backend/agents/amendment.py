@@ -15,7 +15,7 @@ from backend.pipelines.auto_drafter import regenerate_draft
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 
 async def check_amendments(tender: dict) -> None:
@@ -41,7 +41,7 @@ async def check_amendments(tender: dict) -> None:
 
     try:
         headers = {
-            "Authorization": f"Bearer {settings.tinyfish_api_key}",
+            "X-API-Key": settings.tinyfish_api_key,
             "Content-Type": "application/json",
             "Accept": "text/event-stream",
         }
@@ -50,7 +50,7 @@ async def check_amendments(tender: dict) -> None:
         result = None
         async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
             async with client.stream(
-                "POST", f"{TINYFISH_BASE_URL}/agent",
+                "POST", f"{TINYFISH_BASE_URL}/automation/run-sse",
                 headers=headers, json=payload
             ) as response:
                 response.raise_for_status()
@@ -71,7 +71,7 @@ async def check_amendments(tender: dict) -> None:
         if not result or not result.get("has_changes"):
             logger.debug(f"No changes detected for tender {tender_id}")
             if session:
-                session.end_session("Success")
+                session.end_session(end_state="Success")
             return
 
         # Build amendment event
@@ -117,12 +117,12 @@ async def check_amendments(tender: dict) -> None:
             asyncio.create_task(regenerate_draft(tender_id, company_name, reason="amendment"))
 
         if session:
-            session.end_session("Success")
+            session.end_session(end_state="Success")
 
     except Exception as e:
         logger.error(f"Amendment check failed for {tender_id}: {e}")
         if session:
-            session.end_session("Fail")
+            session.end_session(end_state="Fail")
 
 
 def _parse_amendment_result(content) -> dict:

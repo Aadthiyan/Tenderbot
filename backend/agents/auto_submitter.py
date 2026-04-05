@@ -15,7 +15,7 @@ from backend.config import get_settings
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 # We use a generic sandbox target for the Hackathon Demo
 # In production, this would be the specific SAM.gov or TED EU submission URL extracted during scraping.
@@ -75,7 +75,7 @@ async def auto_submit_proposal(tender_id: str, tender_title: str, company_name: 
                 action_type="auto_submit_staged",
                 returns={"status": "success", "agent_response": result_data}
             ))
-            session.end_session("Success")
+            session.end_session(end_state="Success")
 
         logger.info(f"✅ Auto-Submitter successfully staged proposal for {tender_id}.")
         return {"status": "success", "agent_response": result_data}
@@ -86,7 +86,7 @@ async def auto_submit_proposal(tender_id: str, tender_title: str, company_name: 
                 action_type="auto_submit_failed",
                 returns={"error": str(e)}
             ))
-            session.end_session("Fail")
+            session.end_session(end_state="Fail")
         logger.error(f"❌ Auto-Submitter failed for {tender_id}: {e}")
         return {"status": "error", "error": str(e)}
 
@@ -100,7 +100,7 @@ async def _execute_action_tinyfish(url: str, goal: str) -> dict:
         return {"status": "ready_for_human", "summary": "Simulated filling 'Customer name' and 'Comments' field."}
 
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream",
     }
@@ -113,7 +113,7 @@ async def _execute_action_tinyfish(url: str, goal: str) -> dict:
     result_data = {}
 
     async with httpx.AsyncClient(timeout=180) as client:
-        async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+        async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
             if response.status_code == 401:
                 raise ValueError("Unauthorized. Check TINYFISH_API_KEY.")
             response.raise_for_status()

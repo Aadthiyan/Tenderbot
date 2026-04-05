@@ -14,7 +14,7 @@ from backend.agents.portal_configs import PORTAL_CONFIGS
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 
 @retry(
@@ -80,7 +80,7 @@ async def scrape_portal(portal_key: str, keywords: list[str]) -> list[dict]:
                 action_type="portal_scrape_complete",
                 returns={"portal": portal_key, "tenders_found": len(tenders)}
             ))
-            session.end_session("Success")
+            session.end_session(end_state="Success")
 
         logger.info(f"TinyFish [{portal_key}]: {len(tenders)} tenders extracted")
         return tenders
@@ -91,7 +91,7 @@ async def scrape_portal(portal_key: str, keywords: list[str]) -> list[dict]:
                 action_type="portal_scrape_failed",
                 returns={"portal": portal_key, "error": str(e)}
             ))
-            session.end_session("Fail")
+            session.end_session(end_state="Fail")
         raise
 
 
@@ -101,7 +101,7 @@ async def _call_tinyfish(url: str, goal: str) -> list[dict]:
     TinyFish streams Server-Sent Events (SSE); we consume until the result event.
     """
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream",
     }
@@ -117,7 +117,7 @@ async def _call_tinyfish(url: str, goal: str) -> list[dict]:
     async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
         async with client.stream(
             "POST",
-            f"{TINYFISH_BASE_URL}/agent",
+            f"{TINYFISH_BASE_URL}/automation/run-sse",
             headers=headers,
             json=payload,
         ) as response:

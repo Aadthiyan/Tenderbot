@@ -12,7 +12,7 @@ from backend.config import get_settings
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 CANADABUYS_CONFIG = {
     # status=1 filters to Open tenders
@@ -72,13 +72,13 @@ async def run_canadabuys_agent(keywords: list[str]) -> list[dict]:
             session.record(agentops.ActionEvent(
                 action_type="canadabuys_scrape_complete", returns={"found": len(tenders)}
             ))
-            session.end_session("Success")
+            session.end_session(end_state="Success")
         logger.info(f"✅ CanadaBuys Agent finished — {len(tenders)} tenders.")
         return tenders
 
     except Exception as e:
         if session:
-            session.end_session("Fail")
+            session.end_session(end_state="Fail")
         logger.error(f"❌ CanadaBuys Agent failed: {e}")
         raise
 
@@ -89,12 +89,12 @@ async def _execute_tinyfish(url: str, goal: str) -> list[dict]:
         await asyncio.sleep(2)
         return _get_mock_data()
 
-    headers = {"Authorization": f"Bearer {settings.tinyfish_api_key}", "Accept": "text/event-stream"}
+    headers = {"X-API-Key": settings.tinyfish_api_key, "Accept": "text/event-stream"}
     payload = {"url": url, "goal": goal, "output_format": "json"}
     result_data = []
 
     async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
-        async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+        async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
             if response.status_code == 401: raise ValueError("Unauthorized")
             async for line in response.aiter_lines():
                 if not line.startswith("data:"): continue

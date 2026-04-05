@@ -14,7 +14,7 @@ from backend.agents.portal_configs import FORM_FILL_GOAL
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 @retry(stop=stop_after_attempt(2), wait=wait_exponential(multiplier=2, min=3, max=10), reraise=True)
 async def auto_fill_form(url: str, profile: dict) -> dict:
@@ -40,7 +40,7 @@ async def auto_fill_form(url: str, profile: dict) -> dict:
     goal = FORM_FILL_GOAL.format(url=url, profile_json=profile_json)
     
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream"
     }
@@ -54,7 +54,7 @@ async def auto_fill_form(url: str, profile: dict) -> dict:
     result = {}
     try:
         async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
-            async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+            async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
                 response.raise_for_status()
                 async for line in response.aiter_lines():
                     if not line.startswith("data:"): continue

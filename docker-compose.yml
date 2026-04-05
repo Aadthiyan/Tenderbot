@@ -1,6 +1,37 @@
-version: "3.9"
-
 services:
+
+  # ── Redis Message Broker ───────────────────────────────────────────
+  redis:
+    image: redis:alpine
+    container_name: tenderbot_redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  # ── Celery Worker (Background Agent Processing) ────────────────────
+  celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: tenderbot_celery_worker
+    command: celery -A backend.celery_app worker --loglevel=info
+    environment:
+      - TINYFISH_API_KEY=${TINYFISH_API_KEY}
+      - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
+      - FIREWORKS_MODEL=${FIREWORKS_MODEL:-accounts/fireworks/models/llama-v3p1-70b-instruct}
+      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_DB_NAME=${MONGODB_DB_NAME:-tenderbot}
+      - COMPOSIO_API_KEY=${COMPOSIO_API_KEY}
+      - AGENTOPS_API_KEY=${AGENTOPS_API_KEY}
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - redis
+    restart: unless-stopped
 
   # ── FastAPI Backend ─────────────────────────────────────────────────
   backend:
@@ -49,4 +80,5 @@ services:
       - NEXT_PUBLIC_API_URL=http://localhost:8000
     depends_on:
       - backend
+      - redis
     restart: unless-stopped

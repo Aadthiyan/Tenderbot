@@ -296,8 +296,7 @@ async def submit_proposal_action(tender_id: str, company_name: str):
     from backend.agents.auto_submitter import auto_submit_proposal
     
     draft = await draft_queue_col().find_one({"tender_id": tender_id})
-    if not draft:
-        raise HTTPException(status_code=404, detail="Draft not found in queue")
+    draft_md = draft.get("draft_markdown", "") if draft else "Ad-hoc proposal draft submitted from UI."
         
     tender = await tenders_col().find_one({"tender_id": tender_id})
     if not tender:
@@ -307,7 +306,7 @@ async def submit_proposal_action(tender_id: str, company_name: str):
         tender_id=tender_id,
         tender_title=tender.get("title", ""),
         company_name=company_name,
-        draft_markdown=draft.get("draft_markdown", "")
+        draft_markdown=draft_md
     )
     
     if result.get("status") == "error":

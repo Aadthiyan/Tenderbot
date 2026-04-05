@@ -13,7 +13,7 @@ from backend.config import get_settings
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-TINYFISH_BASE_URL = "https://api.tinyfish.ai"
+TINYFISH_BASE_URL = "https://agent.tinyfish.ai/v1"
 
 # ── Find a Tender (UK) Specific Configuration ─────────────────────────────────
 # UI Elements Documented:
@@ -90,7 +90,7 @@ async def run_find_a_tender_agent(keywords: list[str]) -> list[dict]:
                 action_type="find_a_tender_scrape_complete",
                 returns={"tenders_found": len(tenders)}
             ))
-            session.end_session("Success")
+            session.end_session(end_state="Success")
 
         logger.info(f"✅ Find a Tender Agent finished — Extracted {len(tenders)} tenders.")
         return tenders
@@ -101,7 +101,7 @@ async def run_find_a_tender_agent(keywords: list[str]) -> list[dict]:
                 action_type="find_a_tender_scrape_failed",
                 returns={"error": str(e)}
             ))
-            session.end_session("Fail")
+            session.end_session(end_state="Fail")
         logger.error(f"❌ Find a Tender Agent failed: {e}")
         raise
 
@@ -115,7 +115,7 @@ async def _execute_tinyfish(url: str, goal: str) -> list[dict]:
         return _get_mock_data()
 
     headers = {
-        "Authorization": f"Bearer {settings.tinyfish_api_key}",
+        "X-API-Key": settings.tinyfish_api_key,
         "Content-Type": "application/json",
         "Accept": "text/event-stream",
     }
@@ -128,7 +128,7 @@ async def _execute_tinyfish(url: str, goal: str) -> list[dict]:
     result_data = []
 
     async with httpx.AsyncClient(timeout=settings.agent_timeout_seconds) as client:
-        async with client.stream("POST", f"{TINYFISH_BASE_URL}/agent", headers=headers, json=payload) as response:
+        async with client.stream("POST", f"{TINYFISH_BASE_URL}/automation/run-sse", headers=headers, json=payload) as response:
             if response.status_code == 401:
                 raise ValueError("Unauthorized. Check TINYFISH_API_KEY.")
             response.raise_for_status()

@@ -145,7 +145,7 @@ async def _run_portal_with_logging(portal: str, user_profile: dict) -> list:
         logger.info(f"✅ {portal}: {len(results)} tenders ({elapsed}ms)")
 
         if session:
-            agentops.end_session("Success")
+            agentops.end_session(end_state="Success")
 
         return results
 
@@ -158,7 +158,7 @@ async def _run_portal_with_logging(portal: str, user_profile: dict) -> list:
             "duration_ms": elapsed, "error": "timeout",
         })
         if session:
-            agentops.end_session("Fail", end_state_reason="Timeout")
+            agentops.end_session(end_state="Fail", end_state_reason="Timeout")
         return []
 
     except Exception as e:
@@ -170,5 +170,5 @@ async def _run_portal_with_logging(portal: str, user_profile: dict) -> list:
             "duration_ms": elapsed, "error": str(e),
         })
         if session:
-            agentops.end_session("Fail", end_state_reason=str(e)[:200])
+            agentops.end_session(end_state="Fail", end_state_reason=str(e)[:200])
         return []
