@@ -49,19 +49,27 @@ async def async_process_tender(tender: dict, user_profile: dict):
         tender.update(enriched)
         tender["enriched"] = True
         
-        # Parallel research operations
-        eligibility, intel, research = await asyncio.gather(
-            check_eligibility(tender, user_profile),
-            analyze_competitors(tender, user_profile),
-            research_tender(tender, user_profile),
-            return_exceptions=True
-        )
-        if not isinstance(eligibility, Exception): tender.update(eligibility)
-        if not isinstance(intel, Exception): tender.update(intel)
-        if not isinstance(research, Exception): tender.update(research)
+        # Parallel research operations with strict timeouts
+        try:
+            eligibility, intel, research = await asyncio.wait_for(
+                asyncio.gather(
+                    check_eligibility(tender, user_profile),
+                    analyze_competitors(tender, user_profile),
+                    research_tender(tender, user_profile),
+                    return_exceptions=True
+                ), 
+                timeout=300
+            )
+            if not isinstance(eligibility, Exception): tender.update(eligibility)
+            if not isinstance(intel, Exception): tender.update(intel)
+            if not isinstance(research, Exception): tender.update(research)
+        except asyncio.TimeoutError:
+            logger.error("Celery: LLM analysis stage timed out.")
+            raise
             
     except Exception as e:
-        logger.warning(f"Celery: Deep scrape failed: {e}")
+        logger.warning(f"Celery: Deep scrape or AI pipeline failed: {e}")
+        raise
 
     # 3. Save to DB
     await upsert_tender(tender)
@@ -108,5 +116,24 @@ def process_tender_task(self, tender: dict, user_profile: dict):
             asyncio.set_event_loop(loop)
         loop.run_until_complete(async_process_tender(tender, user_profile))
     except Exception as exc:
+        if self.request.retries >= self.max_retries:
+            logger.error(f"Task critically failed after max retries. Pushing to DLQ: {exc}")
+            from backend.services.db import get_db
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_closed():
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                db = get_db()
+                loop.run_until_complete(db["dlq"].insert_one({
+                    "tender_id": tender.get("tender_id"),
+                    "company_name": user_profile.get("company_name", "unknown"),
+                    "error": str(exc),
+                    "failed_at": datetime.utcnow()
+                }))
+            except Exception as dlq_err:
+                logger.error(f"DLQ insertion failed: {dlq_err}")
+            return
+        
         logger.error(f"Task failed, retrying: {exc}")
         raise self.retry(exc=exc, countdown=60)

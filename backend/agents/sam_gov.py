@@ -118,7 +118,7 @@ async def run_sam_gov_agent(keywords: list[str]) -> list[dict]:
 
 
 async def _execute_tinyfish(url: str, goal: str) -> list[dict]:
-    """Handles SSE stream from TinyFish API."""
+    """Handles SSE stream from TinyFish API. Now handles both "result" and "COMPLETE" event types."""
     if not settings.tinyfish_api_key:
         logger.warning("TinyFish API Key missing — Returning mock data instead of failing.")
         import asyncio
@@ -145,15 +145,38 @@ async def _execute_tinyfish(url: str, goal: str) -> list[dict]:
             response.raise_for_status()
             
             async for line in response.aiter_lines():
-                if not line.startswith("data:"): continue
+                if not line.startswith("data:"): 
+                    continue
                 raw = line[5:].strip()
-                if raw == "[DONE]": break
+                if raw == "[DONE]": 
+                    break
                 try:
                     event = json.loads(raw)
+                    
+                    # Handle old "result" event format (backward compatibility)
                     if event.get("type") == "result":
                         content = event.get("content", "")
                         result_data = _parse_json(content)
                         break
+                    
+                    # Handle new "COMPLETE" event format (current TinyFish API)
+                    elif event.get("type") == "COMPLETE":
+                        result_obj = event.get("result", {})
+                        if isinstance(result_obj, dict):
+                            content = result_obj.get("result", "")
+                        else:
+                            content = result_obj
+                        
+                        if content:
+                            # Content might be string (markdown) or already parsed JSON
+                            if isinstance(content, str):
+                                result_data = _parse_json(content)
+                            elif isinstance(content, list):
+                                result_data = content
+                            elif isinstance(content, dict):
+                                result_data = [content]
+                            break
+                    
                     elif event.get("type") == "error":
                         raise ValueError(f"Agent error: {event.get('message')}")
                 except json.JSONDecodeError:

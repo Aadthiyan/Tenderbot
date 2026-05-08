@@ -98,7 +98,10 @@ async def scrape_portal(portal_key: str, keywords: list[str]) -> list[dict]:
 async def _call_tinyfish(url: str, goal: str) -> list[dict]:
     """
     Makes the TinyFish /agent streaming call and parses the final JSON result.
-    TinyFish streams Server-Sent Events (SSE); we consume until the result event.
+    TinyFish streams Server-Sent Events (SSE).
+    
+    NOTE: TinyFish API returns data in "COMPLETE" event's "result.result" field,
+    not in a separate "result" event.
     """
     headers = {
         "X-API-Key": settings.tinyfish_api_key,
@@ -131,13 +134,35 @@ async def _call_tinyfish(url: str, goal: str) -> list[dict]:
                         break
                     try:
                         event = json.loads(raw)
-                        # TinyFish sends a final "result" event with extracted data
+                        
+                        # Handle both old "result" event and new "COMPLETE" event formats
                         if event.get("type") == "result":
+                            # Legacy format: result event with content field
                             content = event.get("content", "")
                             result_data = _parse_json_result(content)
                             break
+                        
+                        elif event.get("type") == "COMPLETE":
+                            # New format: COMPLETE event with result.result field containing markdown JSON
+                            result_obj = event.get("result", {})
+                            if isinstance(result_obj, dict):
+                                content = result_obj.get("result", "")
+                            else:
+                                content = result_obj
+                            
+                            if content:
+                                # Content might be a string (markdown code block) or already parsed
+                                if isinstance(content, str):
+                                    result_data = _parse_json_result(content)
+                                elif isinstance(content, list):
+                                    result_data = content  # Already parsed JSON array
+                                elif isinstance(content, dict):
+                                    result_data = [content]  # Single object
+                                break
+                        
                         elif event.get("type") == "error":
                             raise ValueError(f"TinyFish agent error: {event.get('message')}")
+                    
                     except (json.JSONDecodeError, KeyError):
                         continue
 

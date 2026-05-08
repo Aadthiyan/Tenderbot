@@ -103,9 +103,29 @@ async def _execute_tinyfish(url: str, goal: str) -> list[dict]:
                 if raw == "[DONE]": break
                 try:
                     event = json.loads(raw)
+                    
+                    # Handle old "result" event format
                     if event.get("type") == "result":
                         result_data = _parse_json(event.get("content", ""))
                         break
+                    
+                    # Handle new "COMPLETE" event format
+                    elif event.get("type") == "COMPLETE":
+                        result_obj = event.get("result", {})
+                        if isinstance(result_obj, dict):
+                            content = result_obj.get("result", "")
+                        else:
+                            content = result_obj
+                        
+                        if content:
+                            # Content might be string (markdown) or already parsed JSON
+                            if isinstance(content, str):
+                                result_data = _parse_json(content)
+                            elif isinstance(content, list):
+                                result_data = content
+                            elif isinstance(content, dict):
+                                result_data = [content]
+                            break
                 except json.JSONDecodeError: pass
     return result_data
 

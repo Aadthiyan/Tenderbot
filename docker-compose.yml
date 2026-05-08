@@ -16,6 +16,7 @@ services:
     container_name: tenderbot_celery_worker
     command: celery -A backend.celery_app worker --loglevel=info
     environment:
+      - TENANT_ID=${TENANT_ID:-global}
       - TINYFISH_API_KEY=${TINYFISH_API_KEY}
       - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
       - FIREWORKS_MODEL=${FIREWORKS_MODEL:-accounts/fireworks/models/llama-v3p1-70b-instruct}
@@ -42,6 +43,7 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - TENANT_ID=${TENANT_ID:-global}
       - TINYFISH_API_KEY=${TINYFISH_API_KEY}
       - ENABLE_LIVE_SUBMIT=${ENABLE_LIVE_SUBMIT:-False}
       - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}

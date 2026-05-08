@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     tinyfish_api_key: str = ""
     enable_live_submit: bool = False
 
+    # ── Isolation ─────────────────────────────────────────────────────────────
+    tenant_id: str = "global"
+
     # ── Security Moats ────────────────────────────────────────────────────────
     kms_secret_key: str = ""
 
@@ -48,7 +51,7 @@ class Settings(BaseSettings):
     alert_sweep_hour: int = 7
     amendment_check_interval_hours: int = 12
     max_portal_pages: int = 2
-    agent_timeout_seconds: int = 120
+    agent_timeout_seconds: int = 300
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 

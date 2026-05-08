@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-04-07T08:56:16.540854",
+  "total_opportunities": 189,
+  "execution_seconds": 1760.2,
+  "execution_minutes": 29.3,
+  "by_source": {
+    "sam.gov": 25,
+    "ted_eu": 15,
+    "ungm": 0,
+    "find_a_tender": 0,
+    "austender": 23,
+    "canadabuys": 100,
+    "web_search": 5,
+    "alternative_sources": 21
+  },
+  "search_keywords": [
+    "cybersecurity",
+    "cloud architecture",
+    "software development",
+    "DevOps"
+  ],
+  "company_skills": "Python, AWS, GCP, Kubernetes, CI/CD, Security, Machine Learning, Enterprise Solutions",
+  "success_rate": "8/8",
+  "plan": "TinyFish Pro \u2014 Semaphore(15) / up to 20 concurrent agents"
+}

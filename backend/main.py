@@ -48,7 +48,11 @@ async def lifespan(app: FastAPI):
 
     # 2. Initialise AgentOps monitoring
     if settings.agentops_api_key:
-        agentops.init(api_key=settings.agentops_api_key, auto_start_session=False)
+        agentops.init(
+            api_key=settings.agentops_api_key, 
+            tags=[f"tenant:{settings.tenant_id}"],
+            auto_start_session=False
+        )
         logger.info("✅ AgentOps initialised.")
 
     # 3. Start APScheduler background jobs

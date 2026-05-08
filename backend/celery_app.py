@@ -7,12 +7,21 @@ from backend.config import get_settings
 
 settings = get_settings()
 
+import agentops
+
 celery_app = Celery(
     "tenderbot_tasks",
     broker=settings.celery_broker_url,
     backend=settings.celery_result_backend,
     include=["backend.pipelines.orchestrator"]
 )
+
+if settings.agentops_api_key:
+    agentops.init(
+        api_key=settings.agentops_api_key, 
+        tags=[f"tenant:{settings.tenant_id}"],
+        auto_start_session=False
+    )
 
 celery_app.conf.update(
     task_serializer="json",
